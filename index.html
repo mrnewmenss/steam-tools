@@ -6,107 +6,60 @@
   <title>Downloads Page</title>
   <style>
     body {
-      font-family: "FixSys", monospace;  /* Use FixSys font or fallback to monospace */
+      font-family: "FixSys", monospace;
       background-color: #1a1a1a;
       color: white;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      overflow-x: hidden; /* Prevent horizontal scrolling */
-    }
-
-    h1 {
-      margin-bottom: 20px;
-      font-size: 2rem;
       text-align: center;
     }
-
-    .welcome {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .button-container {
+    .video-container {
       margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
-
-    .download-button {
-      background-color: #28a745;
-      color: white;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 18px;
-      margin: 10px;
-      text-decoration: none;
-      width: 250px;  /* Fixed width for buttons */
-      text-align: center;
+    video {
+      width: 80%;
+      max-width: 720px;
+      display: block;
+      margin: auto;
     }
-
-    .download-button:hover {
-      background-color: #218838;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 10px;
-      text-align: center;
-      width: 100%;
-    }
-
-    footer p {
-      font-size: 14px;
-      margin: 0;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-
-      .welcome {
-        font-size: 1.2rem;
-      }
-
-      .download-button {
-        width: 80%;  /* Make buttons more flexible on smaller screens */
-        font-size: 16px;
-      }
+    select {
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <div class="welcome">
-    Welcome to the Mr.News Download Page
-  </div>
   <h1>Download Links</h1>
 
   <div class="button-container">
-    <!-- Flappy Bird download button -->
-    <a href="https://d-04.winudf.com/b/apk/Y29tLmFuZHJvaWRpbm5vdmF0aW9uLmZsYXBweXByb183X2Q5Mzg3MDlh?_fn=RmxhcHB5IEJpcmQgUHJvXzIuMC40X0FQS1B1cmUuYXBr&_p=Y29tLmFuZHJvaWRpbm5vdmF0aW9uLmZsYXBweXBybw%3D%3D&download_id=1271309154317553&is_hot=false&k=6533fe637e46ae0b8d115cc3733712f067eb380c" class="download-button" download>
+    <a href="https://d-04.winudf.com/b/apk/Y29tLmFuZHJvaWRpbm5vdmF0aW9uLmZsYXBweXByb183X2Q5Mzg3MDlh" class="download-button" download>
       Download Flappy Bird for Mobile
     </a>
-    
-    <!-- FNAF movie download button -->
     <a href="https://yts.mx/torrent/download/25438F0E706E7EB840FD2F02AD00ABD61DBF5929" class="download-button" download>
       Download FNAF Movie
     </a>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Mr.New's studios. All Rights Reserved.</p>
-  </footer>
+  <h2>Select and Watch a Movie</h2>
+  <select id="movieSelector">
+    <option value="">-- Select a movie --</option>
+    <option value="movies/movie1.mp4">Movie 1</option>
+    <option value="movies/movie2.mp4">Movie 2</option>
+  </select>
 
+  <div class="video-container">
+    <video id="videoPlayer" controls>
+      <source id="videoSource" src="" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    document.getElementById("movieSelector").addEventListener("change", function() {
+      const videoSource = document.getElementById("videoSource");
+      const videoPlayer = document.getElementById("videoPlayer");
+      videoSource.src = this.value;
+      videoPlayer.load();
+    });
+  </script>
 </body>
 </html>
